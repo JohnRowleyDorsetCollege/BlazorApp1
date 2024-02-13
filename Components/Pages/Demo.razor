@@ -1,9 +1,23 @@
-﻿@page "/college"
+﻿@page "/college/{collegeId:int?}"
 @rendermode InteractiveServer
 <h3>@CollegeName</h3>
+<h2>@collegeId</h2>
 
 
 @code {
+    [Parameter]
+    public int? collegeId {get; set;}
+
     private string CollegeName = "Dorset College";
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        collegeId = collegeId ?? 100;
+    }
+
+
+
+
 
 }
